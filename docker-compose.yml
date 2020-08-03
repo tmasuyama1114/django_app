@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  web:
+    container_name: django-docker
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    working_dir: /code
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    container_name: django-docker-db
+    image: mysql:5.7
+    restart: always
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    env_file:
+      - ./.env
+    environment:
+      MYSQL_DATABASE: MYSQL_DATABASE
+      MYSQL_USER: MYSQL_USER
+      MYSQL_PASSWORD: MYSQL_PASSWORD
+      MYSQL_ALLOW_EMPTY_PASSWORD: ‘yes’
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    
