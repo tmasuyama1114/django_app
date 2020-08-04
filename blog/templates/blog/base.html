@@ -21,6 +21,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'blog:index' %}">Home</a>
           </li>
+          <!-- superuserにログインしているときだけ表示 -->
           {% if user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
@@ -42,10 +43,13 @@
 
     <div class="container">
       <div class="row">
+        <!-- コンテナ内に記事内容を表示　※左ペインではコンテンツ -->
         <div class="col-md-8">
+          
           {% block content %}
           {% endblock %}
         </div>
+        <!-- 右ペインではカテゴリを表示 -->
         <div class="col-md-4">
           <ul class="list-group">
             <li class="list-group-item bg-dark text-white">カテゴリ一覧</li>

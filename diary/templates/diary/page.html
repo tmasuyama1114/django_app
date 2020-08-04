@@ -1,14 +1,17 @@
 <nav aria-label="Page navigation">
   <ul class="pagination">
- 
+      <!-- 前のページが存在しているかどうかを確認 -->
       {% if page_obj.has_previous %}
+        <!-- 前のページが存在している時の処理 -->
         <li class="page-item">
+        <!-- URLにクエリを入れる -->
         <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
       {% endif %}
-    
+      
+      <!-- 複数ページが存在している時のために各ページ番号を表示させる -->
       {% for link_page in page_obj.paginator.page_range %}
         {% if link_page == page_obj.number %}
           <li class="page-item active">
@@ -24,9 +27,11 @@
           </li>
         {% endif %}
       {% endfor %}
-    
+      
+      <!-- 次のページが存在しているかどうかの確認 -->
       {% if page_obj.has_next %}
         <li class="page-item">
+        <!-- 次のページが存在している場合の処理 -->
         <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>

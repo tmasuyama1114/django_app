@@ -2,6 +2,8 @@
 
 {% block content %}
 <p>{{ day.title }}</p>
+<!-- actionにはサーバのどのURLに対して情報を送信する -->
+<!-- actionを空欄にすると現在開いている URL = /diary/add に値を返すので、views.py の add 関数が再度呼び出されることになる -->
 <form action="" method="POST">
   <table class="table">
       <tr>

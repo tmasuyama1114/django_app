@@ -12,11 +12,14 @@
   <body>
     <div class="container">
       <nav class="nav">
+        <!-- DjangoのURLタグを使って「逆引きURL」で呼び出せる (逆引きで呼び出す方が変更が楽) -->
         <a class="nav-link" href="{% url 'diary:index' %}">一覧</a>
+          <!-- superuserでログインしている時だけ表示 -->
           {% if user.is_superuser %}
-        <a class="nav-link" href="{% url 'admin:diary_day_add' %}" target="_blank">追加</a>
+            <a class="nav-link" href="{% url 'admin:diary_day_add' %}" target="_blank">追加</a>
           {% endif %}
       </nav>
+      <!-- このblockの中で各templateの記載内容が呼び出される -->
       {% block content %}
       {% endblock %}
     </div>

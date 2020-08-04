@@ -5,7 +5,7 @@ from .forms import CommentCreateForm
 from .models import Post, Category, Comment
 
 
-class IndexView(generic.ListView):
+class IndexView(generic.ListView): # モデルを作ってからListViewとして働きだす
     model = Post
     paginate_by = 10
 

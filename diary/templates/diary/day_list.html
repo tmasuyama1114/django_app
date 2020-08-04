@@ -14,10 +14,13 @@
   <tbody>
     {% for day in day_list %}
     <tr>
+      <!-- 「url 'アプリ名:逆引きURL' 渡されるモデル.pk」 という描き方 -->
       <td><a href="{% url 'diary:detail' day.pk %}">{{ day.title }}</a></td>
       <td>{{ day.date }}</td>
       <td>
+        <!-- superuserでログインしている時にのみ表示 -->
         {% if user.is_superuser %}
+        <!-- HTMLを アプリ名_モデル名_change にすると admin でそのまま編集できる -->
           <a href="{% url 'admin:diary_day_change' day.pk %}" target="_blank">更新</a>
         {% endif %}
       </td>
@@ -30,7 +33,8 @@
   {% endfor %}
   </tbody>
 </table>
-  
-{% include 'diary/page4.html' %}
+
+<!-- ページネート用のテンプレートを読み込み -->
+{% include 'diary/page.html' %}
 
 {% endblock %}
