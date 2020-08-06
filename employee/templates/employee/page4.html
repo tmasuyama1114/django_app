@@ -12,6 +12,7 @@
       {% for link_page in page_obj.paginator.page_range %}
         {% if link_page == page_obj.number %}
           <li class="page-item active">
+            <!-- 直接ページ番号を指定しているせいで、ポチっと押すとfilter処理とかのクエリが消えてしまう -->
             <a class="page-link" href="?page={{ link_page }}">
               {{ link_page }}
             </a>

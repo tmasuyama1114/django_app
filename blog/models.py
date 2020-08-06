@@ -18,6 +18,7 @@ class Post(models.Model):
     title = models.CharField('タイトル', max_length=255)
     text = models.TextField('本文')
     created_at = models.DateTimeField('作成日', default=timezone.now)
+    # 外部キーとしてCategoryモデルオブジェクトを呼び出す
     category = models.ForeignKey(Category, verbose_name='カテゴリ', on_delete=models.PROTECT)
 
     def __str__(self):
@@ -32,7 +33,8 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, verbose_name='紐づく記事', on_delete=models.PROTECT)
     created_at = models.DateTimeField('作成日', default=timezone.now)
 
+    # 特殊メソッド
     def __str__(self):
-        return self.text[:10]
+        return self.text[:10] # 本文の10文字目までを表示させる
 
 

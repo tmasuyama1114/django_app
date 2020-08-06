@@ -2,7 +2,9 @@
 
 {% block content %}
 <form action="" method="POST">
+    <!-- 複数の入力欄が関連したエラーを見つける -->
     {{ form.non_field_errors }}
+    <!-- こう書くとform内の各入力欄をformで取り出せる(fieldという名前で取り出そう) -->
     {% for field in form %}
     <div class="form-group">
         <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>

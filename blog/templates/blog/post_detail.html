@@ -9,6 +9,7 @@
   </div>
 </div>
 
+<!-- post.comment_set.all で post に紐付いたコメントを自動的にすべて取得する（定型的な書き方） -->
 {% for comment in post.comment_set.all %}
   <p>
     {{ comment.name }}<br>
@@ -16,5 +17,6 @@
   </p>
 {% endfor %}
 
+<!-- 記事の pk を渡しながらフォームを呼び出す -->
 <a class="btn btn-dark" href="{% url 'blog:comment' post.pk %}">コメント投稿ページへ</a>
 {% endblock %}

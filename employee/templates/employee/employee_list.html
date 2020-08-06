@@ -25,6 +25,7 @@
       <td>{{ employee.first_name }}</td>
       <td>{{ employee.email }}</td>
       <td>{{ employee.department }}</td>
+      <!-- club は one to many が許されているので、一行で複数の club を表示 -->
       <td>{% for club in employee.club.all %}{{ club }},{% endfor %}</td>
     </tr>
     {% endfor %}
